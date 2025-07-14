@@ -1,20 +1,18 @@
 package com.example.testdagger.example2.presentation
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.testdagger.R
 import com.example.testdagger.example2.ExampleApp
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity2 : AppCompatActivity() {
 
     private val component by lazy {
         (application as ExampleApp).component
-            .activityComponentFactory().create("String1", "Pole1")
+            .activityComponentFactory().create("String2", "Pole2")
     }
 
     @Inject
@@ -36,11 +34,5 @@ class MainActivity : AppCompatActivity() {
         Log.d("MainActivityTag", "${component.getApiService()}")
         viewModel.method()
         viewModel2.method()
-
-        findViewById<TextView>(R.id.tvClick).setOnClickListener{
-            Intent(this,MainActivity2::class.java).apply {
-                startActivity(this)
-            }
-        }
     }
 }
